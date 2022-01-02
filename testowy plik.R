@@ -4,23 +4,20 @@ library(data.table)
 library(stringr)
 library(ggplot2)
 
-files <- list.files(path="C:/Users/lenovo/Downloads/danehistorycznepowiaty", pattern="*.txt", full.names=TRUE, recursive=FALSE)
 
-
-setwd("C:/Users/lenovo/Downloads/danehistorycznepowiaty")
 
 file_list <- list.files(path="C:/Users/lenovo/Downloads/danehistorycznepowiaty",full.names = TRUE,pattern="*.csv")
+file_list <- list.files(path="/home/michal/Desktop/Ysiu/danehistorycznepowiaty",full.names = TRUE,pattern="*.csv")
 
 dataset <- data.frame()
 
 
 for (i in 1:length(file_list)){
-  temp_data <- fread(file_list[i]) 
+  temp_data <- fread(file_list[i],encoding = 'Latin-1') 
   napis=substr(file_list[i],50,57)
   temp_data$data_pliku=paste0(substr(napis,1,4),'-',substr(napis,5,6),'-',substr(napis,7,8))
   dataset <- rbind(dataset, temp_data,fill=TRUE)  
 }
-sort(unique(dataset$powiat_miasto))
 
 
 
@@ -53,11 +50,68 @@ dataset$powiat_miasto=str_replace(dataset$powiat_miasto, "Ĺ‚", "ł")
 dataset$wojewodztwo=str_replace(dataset$wojewodztwo, "Ä‡", "ć")
 dataset$powiat_miasto=str_replace(dataset$powiat_miasto, "Ä‡", "ć")
 
+dataset$wojewodztwo=str_replace(dataset$wojewodztwo, "³", "ł")
+dataset$powiat_miasto=str_replace(dataset$powiat_miasto, "³", "ł")
+
+dataset$wojewodztwo=str_replace(dataset$wojewodztwo, "Å¼", "ż")
+dataset$powiat_miasto=str_replace(dataset$powiat_miasto, "Å¼", "ż")
+
+dataset$wojewodztwo=str_replace(dataset$wojewodztwo, "Å\u0081", "Ł")
+dataset$powiat_miasto=str_replace(dataset$powiat_miasto, "Å\u0081", "Ł")
+
+dataset$wojewodztwo=str_replace(dataset$wojewodztwo, "Å»", "Ż")
+dataset$powiat_miasto=str_replace(dataset$powiat_miasto, "Å»", "Ż")
+
+dataset$wojewodztwo=str_replace(dataset$wojewodztwo, "Å\u009a", "Ś")
+dataset$powiat_miasto=str_replace(dataset$powiat_miasto, "Å\u009a", "Ś")
+dataset$wojewodztwo=str_replace(dataset$wojewodztwo, "Å\u0082", "ł")
+dataset$powiat_miasto=str_replace(dataset$powiat_miasto, "Å\u0082", "ł")
+dataset$wojewodztwo=str_replace(dataset$wojewodztwo, "Å\u0084", "ń")
+dataset$powiat_miasto=str_replace(dataset$powiat_miasto, "Å\u0084", "ń")
+dataset$wojewodztwo=str_replace(dataset$wojewodztwo, "Ä\u0099", "ę")
+dataset$powiat_miasto=str_replace(dataset$powiat_miasto, "Ä\u0099", "ę")
+dataset$wojewodztwo=str_replace(dataset$wojewodztwo, "Å\u0084", "ń")
+dataset$powiat_miasto=str_replace(dataset$powiat_miasto, "Å\u0084", "ń")
+dataset$wojewodztwo=str_replace(dataset$wojewodztwo, "ê", "ę")
+dataset$powiat_miasto=str_replace(dataset$powiat_miasto, "ê", "ę")
+dataset$wojewodztwo=str_replace(dataset$wojewodztwo, "ñ", "ń")
+dataset$powiat_miasto=str_replace(dataset$powiat_miasto, "ñ", "ń")
+dataset$wojewodztwo=str_replace(dataset$wojewodztwo, "ñ", "ń")
+dataset$powiat_miasto=str_replace(dataset$powiat_miasto, "ñ", "ń")
+dataset$wojewodztwo=str_replace(dataset$wojewodztwo, "Ãł", "ó")
+dataset$powiat_miasto=str_replace(dataset$powiat_miasto, "Ãł", "ó")
+dataset$wojewodztwo=str_replace(dataset$wojewodztwo, "¹", "ą")
+dataset$powiat_miasto=str_replace(dataset$powiat_miasto, "¹", "ą")
+dataset$wojewodztwo=str_replace(dataset$wojewodztwo, "Ä\u0085", "ą")
+dataset$powiat_miasto=str_replace(dataset$powiat_miasto, "Ä\u0085", "ą")
+dataset$wojewodztwo=str_replace(dataset$wojewodztwo, "¿", "ż")
+dataset$powiat_miasto=str_replace(dataset$powiat_miasto, "¿", "ż")
+dataset$wojewodztwo=str_replace(dataset$wojewodztwo, "Åº", "ź")
+dataset$powiat_miasto=str_replace(dataset$powiat_miasto, "Åº", "ź")
+dataset$wojewodztwo=str_replace(dataset$wojewodztwo, "\u009f", "ź")
+dataset$powiat_miasto=str_replace(dataset$powiat_miasto, "\u009f", "ź")
+dataset$wojewodztwo=str_replace(dataset$wojewodztwo, "\u009c", "ś")
+dataset$powiat_miasto=str_replace(dataset$powiat_miasto, "\u009c", "ś")
+dataset$wojewodztwo=str_replace(dataset$wojewodztwo, "Å\u009b", "ś")
+dataset$powiat_miasto=str_replace(dataset$powiat_miasto, "Å\u009b", "ś")
+dataset$wojewodztwo=str_replace(dataset$wojewodztwo, "£", "Ł")
+dataset$powiat_miasto=str_replace(dataset$powiat_miasto, "£", "Ł")
+dataset$wojewodztwo=str_replace(dataset$wojewodztwo, "\u008c", "Ś")
+dataset$powiat_miasto=str_replace(dataset$powiat_miasto, "\u008c", "Ś")
+dataset$wojewodztwo=str_replace(dataset$wojewodztwo, "³", "ł")
+dataset$powiat_miasto=str_replace(dataset$powiat_miasto, "³", "ł")
+dataset$wojewodztwo=str_replace(dataset$wojewodztwo, "Å\u0082", "ł")
+dataset$powiat_miasto=str_replace(dataset$powiat_miasto, "Å\u0082", "ł")
+dataset$wojewodztwo=str_replace(dataset$wojewodztwo, "Ä\u0087", "ć")
+dataset$powiat_miasto=str_replace(dataset$powiat_miasto, "Ä\u0087", "ć")
+dataset$wojewodztwo=str_replace(dataset$wojewodztwo, "æ", "ć")
+dataset$powiat_miasto=str_replace(dataset$powiat_miasto, "æ", "ć")
 
 
+sort(unique(dataset$powiat_miasto))[41:50]
 dataset$data_pliku=as.Date(dataset$data_pliku)
 ggplot(
-dataset[wojewodztwo =='opolskie'],aes(data_pliku,zgony ,group=powiat_miasto,colour=powiat_miasto))+geom_line()+geom_point()
+dataset[wojewodztwo =='opolskie'],aes(data_pliku,liczba_przypadkow ,group=powiat_miasto,colour=powiat_miasto))+geom_line()
 
 names(dataset)
 table(dataset[is.na(liczba_przypadkow)]$data_pliku)
