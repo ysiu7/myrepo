@@ -2,6 +2,7 @@ library(readxl)
 library(tidyverse)
 library(data.table)
 library(stringr)
+library(ggplot2)
 
 files <- list.files(path="C:/Users/lenovo/Downloads/danehistorycznepowiaty", pattern="*.txt", full.names=TRUE, recursive=FALSE)
 
@@ -54,7 +55,9 @@ dataset$powiat_miasto=str_replace(dataset$powiat_miasto, "Ä‡", "ć")
 
 
 
-dataset[powiat_miasto=='strzelecki']
+dataset$data_pliku=as.Date(dataset$data_pliku)
+ggplot(
+dataset[wojewodztwo =='opolskie'],aes(data_pliku,zgony ,group=powiat_miasto,colour=powiat_miasto))+geom_line()+geom_point()
 
 names(dataset)
 table(dataset[is.na(liczba_przypadkow)]$data_pliku)
