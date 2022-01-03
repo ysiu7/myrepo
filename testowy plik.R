@@ -13,7 +13,7 @@ dataset <- data.frame()
 
 
 for (i in 1:length(file_list)){
-  temp_data <- fread(file_list[i],encoding = 'Latin-1') 
+  temp_data <- fread(file_list[i])#,encoding = 'Latin-1') 
   napis=substr(file_list[i],50,57)
   temp_data$data_pliku=paste0(substr(napis,1,4),'-',substr(napis,5,6),'-',substr(napis,7,8))
   dataset <- rbind(dataset, temp_data,fill=TRUE)  
@@ -50,18 +50,15 @@ dataset$powiat_miasto=str_replace(dataset$powiat_miasto, "Ĺ‚", "ł")
 dataset$wojewodztwo=str_replace(dataset$wojewodztwo, "Ä‡", "ć")
 dataset$powiat_miasto=str_replace(dataset$powiat_miasto, "Ä‡", "ć")
 
+###u Misia
 dataset$wojewodztwo=str_replace(dataset$wojewodztwo, "³", "ł")
 dataset$powiat_miasto=str_replace(dataset$powiat_miasto, "³", "ł")
-
 dataset$wojewodztwo=str_replace(dataset$wojewodztwo, "Å¼", "ż")
 dataset$powiat_miasto=str_replace(dataset$powiat_miasto, "Å¼", "ż")
-
 dataset$wojewodztwo=str_replace(dataset$wojewodztwo, "Å\u0081", "Ł")
 dataset$powiat_miasto=str_replace(dataset$powiat_miasto, "Å\u0081", "Ł")
-
 dataset$wojewodztwo=str_replace(dataset$wojewodztwo, "Å»", "Ż")
 dataset$powiat_miasto=str_replace(dataset$powiat_miasto, "Å»", "Ż")
-
 dataset$wojewodztwo=str_replace(dataset$wojewodztwo, "Å\u009a", "Ś")
 dataset$powiat_miasto=str_replace(dataset$powiat_miasto, "Å\u009a", "Ś")
 dataset$wojewodztwo=str_replace(dataset$wojewodztwo, "Å\u0082", "ł")
@@ -108,7 +105,7 @@ dataset$wojewodztwo=str_replace(dataset$wojewodztwo, "æ", "ć")
 dataset$powiat_miasto=str_replace(dataset$powiat_miasto, "æ", "ć")
 
 
-sort(unique(dataset$powiat_miasto))[41:50]
+
 dataset$data_pliku=as.Date(dataset$data_pliku)
 ggplot(
 dataset[wojewodztwo =='opolskie'],aes(data_pliku,liczba_przypadkow ,group=powiat_miasto,colour=powiat_miasto))+geom_line()
