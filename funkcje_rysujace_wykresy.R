@@ -34,8 +34,8 @@ najszybszy_wzrost_w_ciagu_x_dni_y_powiatow=function(x,y) {
 najszybszy_wzrost_w_ciagu_x_dni_y_powiatow(30,10)
 
 
-liczba_przypadkow_w_powiecie('lipski')
-liczba_przypadkow_w_powiecie_liczby('lipski',10)
+liczba_przypadkow_w_powiecie('nakielski')
+liczba_przypadkow_w_powiecie_liczby('nakielski',32)
 
 
 unique(sort(dataset$powiat_miasto))
