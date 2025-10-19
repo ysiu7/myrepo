@@ -1,0 +1,6 @@
+experiment_id,timestamp,model,params,mean_score,std_score
+8535bafe,2025-08-31 23:22:42,decision_tree,"{""max_depth"": 5, ""random_state"": 42}",0.3920097783701829,0.06527207340044676
+8535bafe,2025-08-31 23:22:42,random_forest,"{""n_estimators"": 200, ""max_depth"": 10, ""random_state"": 42}",0.48723001569269,0.029556972436732918
+8535bafe,2025-08-31 23:22:42,xgboost,"{""n_estimators"": 300, ""learning_rate"": 0.1, ""max_depth"": 4, ""subsample"": 0.8, ""colsample_bytree"": 0.8, ""random_state"": 42}",0.5387836751304075,0.037283787749973596
+8535bafe,2025-08-31 23:22:42,lightgbm,"{""n_estimators"": 300, ""learning_rate"": 0.1, ""max_depth"": -1, ""random_state"": 42}",0.4762428861712428,0.028542588748836886
+8535bafe,2025-08-31 23:22:42,catboost,"{""iterations"": 300, ""learning_rate"": 0.1, ""depth"": 6, ""verbose"": false, ""random_seed"": 42}",0.5257124185327631,0.024603447756301803
